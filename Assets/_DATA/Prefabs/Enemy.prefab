@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3069767259894347208}
   - component: {fileID: 3069767259894347214}
   - component: {fileID: 3069767259894347215}
+  - component: {fileID: 777233840}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3069767259894347209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.14, y: 1.36, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4501730794121474498}
   m_Father: {fileID: 0}
@@ -122,9 +123,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.025, y: -0.3}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.2
 --- !u!114 &3069767259894347208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,8 +157,9 @@ MonoBehaviour:
     m_Bits: 0
   _range: 0.5
   _damage: 10
-  _knockback: 100
+  _knockback: 10
   _cooldown: 2
+  _attackDuration: 0.25
 --- !u!114 &3069767259894347215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +177,25 @@ MonoBehaviour:
   aggroRange: 2
   aggroOvertime: 2
   aggroSpeed: 1
+--- !u!95 &777233840
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3069767259894347209}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3bb980cca9e82544aceadf5f9138b6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5624259230561023314
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,9 +220,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5624259230561023314}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.125, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.25, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.01, y: -0.45, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3069767259894347212}
   m_RootOrder: 0
