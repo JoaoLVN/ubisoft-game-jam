@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MeleeWeapon : Item
 {
@@ -6,6 +7,8 @@ public class MeleeWeapon : Item
     [SerializeField] private float _radius = 1;
     [SerializeField] private float _range = 1;
     [SerializeField] private float _damage = 10;
+    [SerializeField] private float _knockback = 100;
+    [SerializeField] private float _cooldown = 2;
 
     private bool _ready = true;
     public override void Use()
@@ -21,11 +24,18 @@ public class MeleeWeapon : Item
             Character character = hit.rigidbody.GetComponent<Character>();
             if (!character) return;
             character.ApplyDamage(_damage);
+            Vector2 direction = character.transform.position - _controller.transform.position;
+            direction.Normalize();
+            character.ApplyKnockback(direction, _knockback);
         }
+        StartCoroutine(CooldownRoutine());
     }
 
-    private void Update()
+
+    private IEnumerator CooldownRoutine()
     {
-        if (!_ready && !_controller.Use) _ready = true;
+        yield return new WaitForSeconds(_cooldown);
+        while (_controller.Use) yield return null;
+        _ready = true;
     }
 }

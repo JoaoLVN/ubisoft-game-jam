@@ -3,10 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class CharacterMovement : MonoBehaviour
 {
-    public Vector2 Forward { get { return _forward; } }
-    public Vector2 Right { get { return Quaternion.Euler(0, 0, 90) * _forward; } }
     [SerializeField] private float _moveSpeed = 5f;
-    private Vector2 _forward = Vector2.zero;
     private Rigidbody2D _rigidbody;
 
     private Vector2 _moveDirection = Vector2.zero;
@@ -19,7 +16,6 @@ public class CharacterMovement : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement();
-        Debug.DrawRay(transform.position, Forward);
     }
 
     private void HandleMovement()
@@ -30,8 +26,5 @@ public class CharacterMovement : MonoBehaviour
     public void Move(Vector2 direction)
     {
         _moveDirection = direction;
-
-        if (direction.magnitude != 0)
-            _forward = direction;
     }
 }

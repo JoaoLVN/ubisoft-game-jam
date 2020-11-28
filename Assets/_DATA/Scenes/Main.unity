@@ -158,9 +158,11 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 51
-  _radius: 2
+  _radius: 1
   _range: 1
   _damage: 10
+  _knockback: 50
+  _cooldown: 0.5
 --- !u!61 &201384596
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -620,7 +622,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -708,6 +710,7 @@ GameObject:
   - component: {fileID: 820042179}
   - component: {fileID: 820042185}
   - component: {fileID: 820042184}
+  - component: {fileID: 820042186}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -868,6 +871,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+--- !u!114 &820042186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820042178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a07e58aefa79f4cb708f282a1ebdd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1627279581
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +985,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1115,7 +1130,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
