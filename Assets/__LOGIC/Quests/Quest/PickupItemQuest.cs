@@ -25,6 +25,7 @@ public class PickupItemQuest : Quest
     public override void Init(Inventory inventory)
     {
         _complete = false;
+        _currentQuantity = 0;
         inventory.OnItemPicked.AddListener((item) =>
         {
             if (item.GetType() != Item.GetType()) return;
