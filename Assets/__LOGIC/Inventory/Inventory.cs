@@ -6,7 +6,34 @@ using UnityEngine.Events;
 public class Inventory : MonoBehaviour
 {
     public UnityEvent<Item> OnItemPicked = new UnityEvent<Item>();
-    [SerializeField] private int _selectedSlot = 0;
+    public int SelectedSlot
+    {
+        get
+        {
+            return _selectedSlot;
+        }
+        set
+        {
+            _selectedSlot = (value % _capacity + _capacity) % _capacity;
+        }
+    }
+    public Item[] Items
+    {
+        get
+        {
+            return (Item[])_items.Clone();
+        }
+    }
+
+    public int Capacity
+    {
+        get
+        {
+            return _capacity;
+        }
+    }
+
+    private int _selectedSlot = 0;
     [SerializeField] private int _capacity = 5;
     [SerializeField] private Item[] _items;
 
@@ -44,7 +71,7 @@ public class Inventory : MonoBehaviour
 
     private void PickUpItem(Item item)
     {
-        int freeSlot = Array.FindIndex(_items, x => !x);
+        int freeSlot = !_items[_selectedSlot] ? _selectedSlot : Array.FindIndex(_items, x => !x);
         if (freeSlot == -1) return;
         item.Pickup(this, _controller);
         _items[freeSlot] = item;

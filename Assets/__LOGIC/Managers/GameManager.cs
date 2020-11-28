@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
             case GAME_STATE.INTRO:
                 break;
             case GAME_STATE.GAME:
-                Debug.Log(_timeLeft);
                 _timeLeft = Mathf.Clamp(_timeLeft - Time.deltaTime, 0f, _maxTimer);
                 break;
             case GAME_STATE.HELP:

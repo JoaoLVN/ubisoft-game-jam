@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(CharacterMovement))]
+[RequireComponent(typeof(CharacterMovement), typeof(Inventory))]
 public class PlayerController : MonoBehaviour
 {
     public bool Drop { get { return Input.GetButton("Drop"); } }
@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 Forward { get { return _forward; } }
     public Vector2 Right { get { return Quaternion.Euler(0, 0, 90) * _forward; } }
 
+    private Inventory _inventory;
     private CharacterMovement _characterMovement;
     private SpriteRenderer _spriteRenderer;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         _characterMovement = GetComponent<CharacterMovement>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _inventory = GetComponent<Inventory>();
     }
 
     private void Update()
@@ -35,5 +37,15 @@ public class PlayerController : MonoBehaviour
         _forward = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         _forward.Normalize();
         _characterMovement.Move(_movementAxis);
+
+        for (int i = 0; i < _inventory.Capacity; i++)
+        {
+            if (Input.GetButtonDown($"Hot Bar {i + 1}"))
+            {
+                _inventory.SelectedSlot = i;
+            }
+        }
+        _inventory.SelectedSlot += Input.mouseScrollDelta.y == 0 ? 0 : (int)Mathf.Sign(Input.mouseScrollDelta.y);
+
     }
 }

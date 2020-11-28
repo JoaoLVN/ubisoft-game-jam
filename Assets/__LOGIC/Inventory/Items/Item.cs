@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(Sprite))]
 public class Item : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
