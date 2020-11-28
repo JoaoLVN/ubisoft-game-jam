@@ -10,10 +10,14 @@ public class Character : MonoBehaviour
     [SerializeField] private float _health = 100;
     private CharacterMovement _characterMovement;
     private Rigidbody2D _rigidbody;
+    protected Animator _animator;
+
+    protected IEnumerator _stunCoroutine;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         _characterMovement = GetComponent<CharacterMovement>();
     }
 
@@ -21,31 +25,26 @@ public class Character : MonoBehaviour
     {
         _health -= damage;
         _health = Mathf.Clamp(_health, 0, 100);
-        if (_health == 0) Die();
 
+        if (_animator)
+            _animator.SetTrigger("Hit");
         JuiceHelper.ScreenShake(.1f, .05f, 1);
+
+        if (_health == 0) Die();
     }
     public void ApplyKnockback(Vector2 direction, float knockback)
     {
-        _characterMovement.enabled = false;
-        _rigidbody.velocity = Vector2.zero;
+        Stun(.05f);
         _rigidbody.AddForce(direction * knockback, ForceMode2D.Impulse);
-        this.DelayedCall(.05f, () =>
-        {
-            _rigidbody.velocity = Vector2.zero;
-            _characterMovement.enabled = true;
-        });
     }
 
     public void Stun(float time)
     {
+        if (_stunCoroutine != null)
+            StopCoroutine(_stunCoroutine);
 
-        _characterMovement.enabled = false;
-        this.DelayedCall(time, () =>
-        {
-
-            _characterMovement.enabled = true;
-        });
+        _stunCoroutine = StunRoutine(time);
+        StartCoroutine(_stunCoroutine);
     }
 
     public void Die()
@@ -53,6 +52,14 @@ public class Character : MonoBehaviour
         GameObject.Destroy(gameObject);
     }
 
+    private IEnumerator StunRoutine(float time)
+    {
+        _characterMovement.enabled = false;
+        _rigidbody.velocity = Vector2.zero;
 
+        yield return new WaitForSeconds(time);
 
+        _characterMovement.enabled = true;
+        _rigidbody.velocity = Vector2.zero;
+    }
 }

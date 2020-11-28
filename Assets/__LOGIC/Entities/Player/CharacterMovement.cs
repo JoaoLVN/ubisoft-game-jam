@@ -8,35 +8,35 @@ public class CharacterMovement : MonoBehaviour
         get { return _moveSpeed; }
         set { _moveSpeed = value; }
     }
-    [SerializeField] private float _moveSpeed = 5f;
-    private Rigidbody2D _rigidbody;
-    private Animator _animator;
+    [SerializeField] protected float _moveSpeed = 5f;
+    protected Rigidbody2D _rigidbody;
+    protected Animator _animator;
 
-    private Vector2 _moveDirection = Vector2.zero;
+    protected Vector2 _moveDirection = Vector2.zero;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rigidbody = GetComponentInChildren<Rigidbody2D>();
         _animator = GetComponentInChildren<Animator>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (_animator)
             _animator.SetFloat("Movement", _moveDirection.magnitude);
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         HandleMovement();
     }
 
-    private void HandleMovement()
+    protected virtual void HandleMovement()
     {
         _rigidbody.velocity = _moveDirection * _moveSpeed;
     }
 
-    public void Move(Vector2 direction)
+    public virtual void Move(Vector2 direction)
     {
         _moveDirection = direction;
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterMovement))]
+[RequireComponent(typeof(EnemyBehaviour))]
 public class EnemyAIMelee : EnemyAI
 {
     //////////////////////////////////////////////////////////////////////////
@@ -30,7 +30,7 @@ public class EnemyAIMelee : EnemyAI
 
     //--HIDDEN-REFERENCES---------------------------------------------------//
 
-    protected CharacterMovement _character;
+    protected EnemyBehaviour _character;
 
     //////////////////////////////////////////////////////////////////////////
 
@@ -38,7 +38,7 @@ public class EnemyAIMelee : EnemyAI
     {
         base.Awake();
 
-        _character = GetComponent<CharacterMovement>();
+        _character = GetComponent<EnemyBehaviour>();
     }
 
     protected override void Update()
@@ -100,7 +100,21 @@ public class EnemyAIMelee : EnemyAI
         else
         {
             _overtime = 0f;
+
+            if (_playerDistance.magnitude < _character.Range)
+                _state = AI_STATE.ATTACK;
         }
+    }
+
+    protected override void OnStateAttack()
+    {
+        base.OnStateAttack();
+
+        _character.Move(Vector2.zero);
+        _character.Attack(_player.GetComponent<Character>());
+
+        if (_playerDistance.magnitude > _character.Range)
+            _state = AI_STATE.AGGRO;
     }
 
     //----------------------------------------------------------------------//
