@@ -44,7 +44,6 @@ public class Inventory : MonoBehaviour
     {
         _items = new Item[_capacity];
         _controller = GetComponent<PlayerController>();
-        _ignoredColliders.Add(_defaultItem.GetComponent<Collider2D>());
         _defaultItem.Pickup(this, _controller);
     }
 
