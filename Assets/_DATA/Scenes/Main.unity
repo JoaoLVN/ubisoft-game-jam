@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43ff698e3c6f6749bf30c8133d50f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _questManager: {fileID: 295531684}
   _maxTimer: 120
 --- !u!114 &549411521 stripped
 MonoBehaviour:
@@ -1437,7 +1438,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

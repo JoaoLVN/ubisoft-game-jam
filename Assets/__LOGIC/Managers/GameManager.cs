@@ -1,40 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Linq;
 using UnityEngine;
-using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public enum GAME_STATE
 {
     START,
     INTRO,
     GAME,
-    HELP
+    PAUSE,
+    FAILED,
+    WON
 }
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public static GAME_STATE State { get { return instance._state; } }
-    public static float TimeLeft { get { return instance._timeLeft; } }
+    public static GameManager Instance;
+    public static GAME_STATE State { get { return Instance._state; } }
+    public static float TimeLeft { get { return Instance._timeLeft; } }
 
     private GAME_STATE _state = GAME_STATE.GAME;
     private GAME_STATE _lateState = GAME_STATE.INTRO;
 
-    [SerializeField]
-    private float _maxTimer;
+    [SerializeField] private QuestManager _questManager;
+    [SerializeField] private float _maxTimer;
     private float _timeLeft;
 
     /////////////////////////////////////////////////////////
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            GameObject.DestroyImmediate(this);
             return;
         }
 
-        instance = this;
+        Instance = this;
     }
 
     private void Start()
@@ -51,6 +52,18 @@ public class GameManager : MonoBehaviour
             OnStateChanged();
 
         _lateState = _state;
+
+    }
+    private void LateUpdate()
+    {
+        if (_timeLeft == 0)
+        {
+            _state = GAME_STATE.FAILED;
+        }
+        else if (_questManager.Quests.All(x => x.Complete))
+        {
+            _state = GAME_STATE.WON;
+        }
     }
 
     /////////////////////////////////////////////////////////
@@ -66,7 +79,14 @@ public class GameManager : MonoBehaviour
             case GAME_STATE.GAME:
                 _timeLeft = Mathf.Clamp(_timeLeft - Time.deltaTime, 0f, _maxTimer);
                 break;
-            case GAME_STATE.HELP:
+            case GAME_STATE.PAUSE:
+                break;
+            case GAME_STATE.WON:
+                Debug.Log("Won");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                break;
+            case GAME_STATE.FAILED:
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
         }
     }
@@ -82,7 +102,7 @@ public class GameManager : MonoBehaviour
             case GAME_STATE.GAME:
                 _timeLeft = _maxTimer;
                 break;
-            case GAME_STATE.HELP:
+            case GAME_STATE.PAUSE:
                 break;
         }
     }
