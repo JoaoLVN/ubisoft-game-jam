@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
@@ -9,18 +10,26 @@ public class QuestManager : MonoBehaviour
             return (Quest[])_quests.Clone();
         }
     }
-    [SerializeField] private Inventory _invetory;
+    [SerializeField] private ShoppingKart _shoppingKart;
     [SerializeField] private Quest[] _quests;
 
     private void Awake()
     {
         foreach (Quest quest in _quests)
         {
-            quest.Init(_invetory);
+            quest.Init(_shoppingKart);
         }
     }
 
-    private void Update()
+    public bool IsQuestItem(Item item)
     {
+        if (item == null) return false;
+        var pickupItemQuests = _quests.Where(x => (x.GetType() == typeof(PickupItemQuest)));
+        foreach (PickupItemQuest quest in pickupItemQuests)
+        {
+            if (quest.Item.GetType() == item.GetType()) return true;
+        }
+        return false;
     }
+
 }
