@@ -2,10 +2,10 @@
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public abstract class Item : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody;
-    private Collider2D _collider;
-    private Inventory _inventory;
-    private PlayerController _controller;
+    protected Rigidbody2D _rigidbody;
+    protected Collider2D _collider;
+    protected Inventory _inventory;
+    protected PlayerController _controller;
 
     private void Awake()
     {

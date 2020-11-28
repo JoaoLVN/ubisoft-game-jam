@@ -5,6 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterMovement))]
 public class PlayerController : MonoBehaviour
 {
+    public bool Drop { get { return Input.GetButton("Drop"); } }
+    public bool Use { get { return Input.GetButton("Use"); } }
+    public Vector2 Forward { get { return _characterMovement.Forward; } }
+    public Vector2 Right { get { return Quaternion.Euler(0, 0, 90) * _characterMovement.Forward; } }
+
     private CharacterMovement _characterMovement;
     private Vector2 movementAxis;
 
@@ -25,7 +30,5 @@ public class PlayerController : MonoBehaviour
         movementAxis.Normalize();
 
         _characterMovement.Move(movementAxis);
-        _characterMovement.Drop = Input.GetButton("Drop");
-        _characterMovement.Use = Input.GetButton("Use");
     }
 }
