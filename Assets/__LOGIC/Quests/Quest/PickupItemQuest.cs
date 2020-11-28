@@ -22,10 +22,11 @@ public class PickupItemQuest : Quest
     private int _currentQuantity;
     private bool _complete;
 
-    public override void Init(Inventory inventory)
+    public override void Init(ShoppingKart shoppingKart)
     {
         _complete = false;
-        inventory.OnItemPicked.AddListener((item) =>
+        _currentQuantity = 0;
+        shoppingKart.OnItemCollected.AddListener((item) =>
         {
             if (item.GetType() != Item.GetType()) return;
             _complete = ++_currentQuantity >= Quantity;

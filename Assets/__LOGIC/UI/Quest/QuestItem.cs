@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class QuestItem : MonoBehaviour
@@ -13,6 +11,8 @@ public class QuestItem : MonoBehaviour
         if (quest.GetType() == typeof(PickupItemQuest))
         {
             PickupItemQuest itemQuest = (PickupItemQuest)quest;
+            _itemImage.sprite = itemQuest.Item.GetComponent<SpriteRenderer>().sprite;
+            _progressText.text = $"{itemQuest.CurrentQuantity}/{itemQuest.Quantity}";
         }
     }
 }

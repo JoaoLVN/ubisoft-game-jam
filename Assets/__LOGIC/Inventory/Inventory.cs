@@ -2,12 +2,10 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerController))]
 public class Inventory : MonoBehaviour
 {
-    public UnityEvent<Item> OnItemPicked = new UnityEvent<Item>();
     public int SelectedSlot
     {
         get
@@ -90,7 +88,6 @@ public class Inventory : MonoBehaviour
         if (freeSlot == -1) return;
         item.Pickup(this, _controller);
         _items[freeSlot] = item;
-        OnItemPicked.Invoke(item);
     }
     private void DropItem()
     {
@@ -98,6 +95,14 @@ public class Inventory : MonoBehaviour
         if (item == null) return;
         item.Drop();
         _items[_selectedSlot] = null;
+    }
+
+    public void DropItem(Item item)
+    {
+        var index = Array.FindIndex(_items, (x) => x == item);
+        if (index == -1) return;
+        item.Drop();
+        _items[index] = null;
     }
     private void UseItem()
     {
