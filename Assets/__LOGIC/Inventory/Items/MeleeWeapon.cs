@@ -22,6 +22,8 @@ public class MeleeWeapon : Item
         _controller.GetComponent<CharacterMovement>().Move(Vector2.zero);
         _controller.GetComponent<Character>().Stun(_attackDuration);
 
+        StartCoroutine(CooldownRoutine());
+
         RaycastHit2D[] hits = Physics2D.CircleCastAll(_controller.transform.position, _radius, _controller.Forward, _range, _layerMask);
         if (hits == null || hits.Length == 0) return;
         foreach (RaycastHit2D hit in hits)
@@ -33,7 +35,6 @@ public class MeleeWeapon : Item
             direction.Normalize();
             character.ApplyKnockback(direction, _knockback);
         }
-        StartCoroutine(CooldownRoutine());
     }
 
 
