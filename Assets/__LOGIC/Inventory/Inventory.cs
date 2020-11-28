@@ -1,9 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(PlayerController))]
 public class Inventory : MonoBehaviour
 {
+    public UnityEvent<Item> OnItemPicked = new UnityEvent<Item>();
     [SerializeField] private int _selectedSlot = 0;
     [SerializeField] private int _capacity = 5;
     [SerializeField] private Item[] _items;
@@ -46,6 +48,7 @@ public class Inventory : MonoBehaviour
         if (freeSlot == -1) return;
         item.Pickup(this, _controller);
         _items[freeSlot] = item;
+        OnItemPicked.Invoke(item);
     }
     private void DropItem()
     {

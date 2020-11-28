@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-public abstract class Item : MonoBehaviour
+public class Item : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
@@ -27,5 +27,8 @@ public abstract class Item : MonoBehaviour
         _inventory = null;
         _controller = null;
     }
-    public abstract void Use();
+    public virtual void Use()
+    {
+
+    }
 }
