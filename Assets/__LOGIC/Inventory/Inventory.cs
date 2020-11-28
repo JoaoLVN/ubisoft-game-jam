@@ -35,6 +35,7 @@ public class Inventory : MonoBehaviour
 
     private int _selectedSlot = 0;
     [SerializeField] private int _capacity = 5;
+    [SerializeField] private Item _defaultItem;
     [SerializeField] private Item[] _items;
 
     private PlayerController _controller;
@@ -43,6 +44,8 @@ public class Inventory : MonoBehaviour
     {
         _items = new Item[_capacity];
         _controller = GetComponent<PlayerController>();
+        _ignoredColliders.Add(_defaultItem.GetComponent<Collider2D>());
+        _defaultItem.Pickup(this, _controller);
     }
 
     private void LateUpdate()
@@ -107,7 +110,11 @@ public class Inventory : MonoBehaviour
     private void UseItem()
     {
         var item = _items[_selectedSlot];
-        if (item == null) return;
+        if (item == null)
+        {
+            _defaultItem.Use();
+            return;
+        }
         item.Use();
     }
 }

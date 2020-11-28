@@ -42,7 +42,7 @@ public class MeleeWeapon : Item
     {
         _ready = false;
         yield return new WaitForSeconds(_cooldown);
-        while (_controller.Use) yield return null;
+        while (_controller != null && _controller.Use) yield return null;
         _ready = true;
     }
 }
