@@ -9,17 +9,21 @@ public class PlayerController : MonoBehaviour
     public Vector2 Right { get { return Quaternion.Euler(0, 0, 90) * _forward; } }
 
     private CharacterMovement _characterMovement;
+    private SpriteRenderer _spriteRenderer;
+
     private Vector2 _forward;
     private Vector2 _movementAxis;
 
     private void Start()
     {
         _characterMovement = GetComponent<CharacterMovement>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         ProcessInputs();
+        _spriteRenderer.flipX = Forward.x < 0f;
     }
 
     private void ProcessInputs()
