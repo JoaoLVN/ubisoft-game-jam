@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -38,6 +40,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Item[] _items;
 
     private PlayerController _controller;
+    private List<Collider2D> _ignoredColliders = new List<Collider2D>();
     private void Awake()
     {
         _items = new Item[_capacity];
@@ -52,9 +55,21 @@ public class Inventory : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (_ignoredColliders.Contains(other)) return;
+        _ignoredColliders.Add(other);
         Item itemComponent = other.GetComponent<Item>();
         if (itemComponent == null) return;
         PickUpItem(itemComponent);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (_ignoredColliders.Contains(other))
+        {
+            Item itemComponent = other.GetComponent<Item>();
+            if (itemComponent != null && _items.Contains(itemComponent)) return;
+            _ignoredColliders.Remove(other);
+        }
     }
 
     private void ProcessInputs()
