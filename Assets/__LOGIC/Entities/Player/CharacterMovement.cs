@@ -3,6 +3,12 @@
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class CharacterMovement : MonoBehaviour
 {
+
+    public float MoveSpeed
+    {
+        get { return _moveSpeed; }
+        set { _moveSpeed = value; }
+    }
     [SerializeField] private float _moveSpeed = 5f;
     private Rigidbody2D _rigidbody;
 

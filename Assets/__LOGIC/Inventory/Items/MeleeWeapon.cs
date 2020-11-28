@@ -16,7 +16,6 @@ public class MeleeWeapon : Item
         Debug.DrawRay(_controller.transform.position + new Vector3(_controller.Forward.x, _controller.Forward.y) * _range, _controller.Forward * _radius, Color.blue);
         Debug.DrawRay(_controller.transform.position + new Vector3(_controller.Forward.x, _controller.Forward.y) * _range, _controller.Right * _radius, Color.yellow);
         if (!_ready) return;
-        _ready = false;
         RaycastHit2D[] hits = Physics2D.CircleCastAll(_controller.transform.position, _radius, _controller.Forward, _range, _layerMask);
         if (hits == null || hits.Length == 0) return;
         foreach (RaycastHit2D hit in hits)
@@ -34,6 +33,7 @@ public class MeleeWeapon : Item
 
     private IEnumerator CooldownRoutine()
     {
+        _ready = false;
         yield return new WaitForSeconds(_cooldown);
         while (_controller.Use) yield return null;
         _ready = true;
