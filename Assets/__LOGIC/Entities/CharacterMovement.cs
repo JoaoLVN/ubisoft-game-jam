@@ -5,6 +5,11 @@ public class CharacterMovement : MonoBehaviour
 {
     public Vector2 Forward { get { return _forward; } }
     public Vector2 Right { get { return Quaternion.Euler(0, 0, 90) * _forward; } }
+    public float MoveSpeed {
+        get { return _moveSpeed; }
+        set { _moveSpeed = value; }
+    }
+
     [SerializeField] private float _moveSpeed = 5f;
     private Vector2 _forward = Vector2.zero;
     private Rigidbody2D _rigidbody;
