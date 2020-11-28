@@ -2,6 +2,13 @@
 
 public class QuestManager : MonoBehaviour
 {
+    public Quest[] Quests
+    {
+        get
+        {
+            return (Quest[])_quests.Clone();
+        }
+    }
     [SerializeField] private Inventory _invetory;
     [SerializeField] private Quest[] _quests;
 

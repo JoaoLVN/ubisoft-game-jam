@@ -10,7 +10,16 @@ public class PickupItemQuest : Quest
             return _complete;
         }
     }
+    public int CurrentQuantity
+    {
+        get
+        {
+            return _currentQuantity;
+        }
+    }
     public Item Item;
+    public int Quantity;
+    private int _currentQuantity;
     private bool _complete;
 
     public override void Init(Inventory inventory)
@@ -18,7 +27,8 @@ public class PickupItemQuest : Quest
         _complete = false;
         inventory.OnItemPicked.AddListener((item) =>
         {
-            _complete = item.GetType() == Item.GetType();
+            if (item.GetType() != Item.GetType()) return;
+            _complete = ++_currentQuantity >= Quantity;
         });
     }
 }
