@@ -23,7 +23,7 @@ public class Character : MonoBehaviour
         _health = Mathf.Clamp(_health, 0, 100);
         if (_health == 0) Die();
 
-        JuiceHelper.ScreenShake(.1f, .1f, 1);
+        JuiceHelper.ScreenShake(.1f, .05f, 1);
     }
     public void ApplyKnockback(Vector2 direction, float knockback)
     {

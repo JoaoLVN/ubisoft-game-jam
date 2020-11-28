@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4741883290609154975}
   - component: {fileID: 4741883290609154968}
   m_Layer: 0
-  m_Name: Item (1)
+  m_Name: Sample melee weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,8 +147,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 51
-  _radius: 1
-  _range: 1
-  _damage: 10
+  _radius: 0.5
+  _range: 0.1
+  _damage: 25
   _knockback: 50
   _cooldown: 0.5
