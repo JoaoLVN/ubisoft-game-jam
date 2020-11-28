@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-        Debug.DrawRay(transform.position, Forward);
     }
 
     private void ProcessInputs()
