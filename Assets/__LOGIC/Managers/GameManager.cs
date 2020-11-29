@@ -13,9 +13,8 @@ public enum GAME_STATE
     WON
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonBehaviour<GameManager>
 {
-    public static GameManager Instance;
     public static GAME_STATE State { get { return Instance._state; } }
     public static float TimeLeft { get { return Instance._timeLeft; } }
 
@@ -28,17 +27,6 @@ public class GameManager : MonoBehaviour
     private float _timeLeft;
 
     /////////////////////////////////////////////////////////
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-            return;
-        }
-
-        Instance = this;
-    }
 
     private void Start()
     {

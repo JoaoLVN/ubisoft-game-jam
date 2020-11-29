@@ -979,13 +979,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e143bd57c90288f43a63f68b5156b2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioNodes:
-  - name: woosh
-    sound: {fileID: 8300000, guid: 2fb4510a7b7e84746a04e8b33ad6b7f4, type: 3}
-  - name: pickup
-    sound: {fileID: 8300000, guid: 6dd87efc074c4974086d7288364cca56, type: 3}
+  AudioNodes:
   - name: fail
     sound: {fileID: 8300000, guid: 140a0eafd125fd44cbed4c6662506c64, type: 3}
+  - name: pickup
+    sound: {fileID: 8300000, guid: 6dd87efc074c4974086d7288364cca56, type: 3}
+  - name: woosh
+    sound: {fileID: 8300000, guid: 2fb4510a7b7e84746a04e8b33ad6b7f4, type: 3}
 --- !u!82 &1853527603
 AudioSource:
   m_ObjectHideFlags: 0
