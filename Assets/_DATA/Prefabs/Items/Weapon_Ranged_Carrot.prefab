@@ -123,7 +123,7 @@ MonoBehaviour:
   _projectile: {fileID: 5870130871024849162}
   _force: 10
   _damage: 1
-  _cooldown: 2
+  _cooldown: 0.375
   _attackDuration: 0.375
 --- !u!58 &7538493474236620463
 CircleCollider2D:

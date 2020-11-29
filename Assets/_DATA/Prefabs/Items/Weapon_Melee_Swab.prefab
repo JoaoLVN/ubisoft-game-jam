@@ -4934,10 +4934,10 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 256
-  _attackRange: {x: 0.5, y: 0.5}
-  _range: 0.3
-  _damage: 3
-  _knockback: 10
+  _attackRange: {x: 2, y: 2}
+  _range: 0
+  _damage: 5
+  _knockback: 0
   _cooldown: 0.15
   _attackDuration: 0.1
 --- !u!58 &7962412808137349332
