@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1419947816935678164}
   - component: {fileID: 1419947816935678167}
   - component: {fileID: 6762741545459287204}
-  - component: {fileID: 5943105258308729451}
   - component: {fileID: -3325532903706955524}
   m_Layer: 13
   m_Name: Weapon_Ranged_Apple
@@ -76,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5428206428529569624, guid: 275f877fe669f0f4a9767d0e64a3e4e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -126,22 +125,6 @@ MonoBehaviour:
   _damage: 1
   _cooldown: 2
   _attackDuration: 0.25
---- !u!114 &5943105258308729451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419947816935678160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cf29e77ba4ae544a98a2b6c458d6ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderers:
-  - {fileID: 1419947816935678164}
-  _offset: 10
-  _precision: 10
 --- !u!58 &-3325532903706955524
 CircleCollider2D:
   m_ObjectHideFlags: 0
