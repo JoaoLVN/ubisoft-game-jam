@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(CharacterMovement), typeof(Rigidbody2D))]
 public class Character : MonoBehaviour
@@ -58,7 +59,7 @@ public class Character : MonoBehaviour
 
     public void Die()
     {
-        GameObject.Destroy(gameObject);
+        StartCoroutine(DieRoutine());
     }
 
     private IEnumerator StunRoutine(float time)
@@ -70,5 +71,20 @@ public class Character : MonoBehaviour
 
         _characterMovement.enabled = true;
         _rigidbody.velocity = Vector2.zero;
+    }
+
+    private IEnumerator DieRoutine()
+    {
+        _characterMovement.enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+
+        if (tag == "Enemy")
+            GetComponent<EnemyAI>().enabled = false;
+
+        transform.DOScaleY(0f, .1f);
+
+        yield return new WaitForSeconds(.1f);
+
+        GameObject.Destroy(gameObject);
     }
 }
