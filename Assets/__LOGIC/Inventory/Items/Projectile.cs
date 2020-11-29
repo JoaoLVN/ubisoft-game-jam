@@ -10,10 +10,11 @@ public class Projectile : MonoBehaviour
         _character = character;
         _damage = damage;
         GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddTorque(force, ForceMode2D.Impulse);
     }
 
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         var character = other.gameObject.GetComponent<Character>();
         if (character != null && character != _character)
