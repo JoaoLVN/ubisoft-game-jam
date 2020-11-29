@@ -25,7 +25,7 @@ public class MeleeWeapon : Item
 
         StartCoroutine(CooldownRoutine());
 
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(_controller.transform.position, _attackRange, 0, _controller.Forward, _range, _layerMask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(_controller.Pivot.position, _attackRange, 0, _controller.Forward, _range, _layerMask);
         if (hits == null || hits.Length == 0) return;
         foreach (RaycastHit2D hit in hits)
         {
@@ -52,6 +52,6 @@ public class MeleeWeapon : Item
     {
         if (_controller == null) return;
         Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube((Vector2)_controller.transform.position + _controller.Forward * _range, _attackRange);
+        Gizmos.DrawCube((Vector2)_controller.Pivot.position + _controller.Forward * _range, _attackRange);
     }
 }

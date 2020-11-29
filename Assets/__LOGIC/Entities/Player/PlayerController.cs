@@ -3,11 +3,13 @@
 [RequireComponent(typeof(CharacterMovement), typeof(Inventory))]
 public class PlayerController : MonoBehaviour
 {
+    public Transform Pivot { get { return _pivot; } }
     public bool Drop { get { return _drop; } }
     public bool Use { get { return _use; } }
     public Vector2 Forward { get { return _forward; } }
     public Vector2 Right { get { return Quaternion.Euler(0, 0, 90) * _forward; } }
 
+    [SerializeField] private Transform _pivot;
     [SerializeField] private Transform _smear;
     [SerializeField] private Transform _arm;
 
