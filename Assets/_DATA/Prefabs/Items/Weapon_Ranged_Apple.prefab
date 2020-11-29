@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5428206428529569624, guid: 275f877fe669f0f4a9767d0e64a3e4e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   _force: 10
   _damage: 1
   _cooldown: 2
-  _attackDuration: 0.25
+  _attackDuration: 0.375
 --- !u!58 &-3325532903706955524
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4927,7 +4927,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -999
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
