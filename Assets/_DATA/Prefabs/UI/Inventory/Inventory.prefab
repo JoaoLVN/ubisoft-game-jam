@@ -61,14 +61,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0.5686275}
+  m_Color: {r: 0.15686275, g: 0.07058824, b: 0.18431373, a: 0.5686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -91,12 +91,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 1
-    m_Right: 1
+    m_Left: 0
+    m_Right: 0
     m_Top: 1
-    m_Bottom: 1
+    m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -129,6 +129,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3989190066066167965, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989190066066167965, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989190066066167965, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989190066066167965, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675446, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_Name
       value: InventorySlot_Template
@@ -151,7 +167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_AnchorMin.x
@@ -159,15 +175,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 40
+      value: 14.4
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 14.4
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -199,11 +215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 125
+      value: 40.8
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -216,6 +232,10 @@ PrefabInstance:
     - target: {fileID: 3989190066623675447, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989190066623675465, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9140219332459710693, guid: 86ddc8fb876bd744da57bb414ca01e13, type: 3}
       propertyPath: _itemImage

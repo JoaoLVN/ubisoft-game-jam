@@ -5,7 +5,7 @@ public class JuiceHelper : MonoBehaviour
 {
     public static void ScreenShake(float time, float strength, int vibrato)
     {
-        Camera.main.transform.parent.DOShakePosition(time, strength, vibrato).SetUpdate(true);
+        Camera.main.transform.parent.DOShakePosition(time, new Vector3(strength, strength, 0f), vibrato).SetUpdate(true);
     }
 
     public static void FreezeFrame(float time)
