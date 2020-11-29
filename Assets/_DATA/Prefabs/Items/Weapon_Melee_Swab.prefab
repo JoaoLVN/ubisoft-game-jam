@@ -4824,7 +4824,6 @@ GameObject:
   - component: {fileID: 7166714731250936709}
   - component: {fileID: 7166714731250936710}
   - component: {fileID: 7166714731250936704}
-  - component: {fileID: 2502810250058461498}
   - component: {fileID: 7962412808137349332}
   m_Layer: 13
   m_Name: Weapon_Melee_Swab
@@ -4887,7 +4886,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7583409310137716746, guid: 275f877fe669f0f4a9767d0e64a3e4e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4941,22 +4940,6 @@ MonoBehaviour:
   _knockback: 10
   _cooldown: 0.15
   _attackDuration: 0.1
---- !u!114 &2502810250058461498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7166714731250936705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cf29e77ba4ae544a98a2b6c458d6ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderers:
-  - {fileID: 7166714731250936709}
-  _offset: 10
-  _precision: 10
 --- !u!58 &7962412808137349332
 CircleCollider2D:
   m_ObjectHideFlags: 0

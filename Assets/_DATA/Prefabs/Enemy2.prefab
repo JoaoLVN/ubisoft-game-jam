@@ -180,7 +180,6 @@ GameObject:
   - component: {fileID: 1692963988488320829}
   - component: {fileID: 1692963988488320828}
   - component: {fileID: 4459861921531438915}
-  - component: {fileID: 4823935101243806566}
   - component: {fileID: 874939479338340088}
   m_Layer: 8
   m_Name: Enemy2
@@ -364,22 +363,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4823935101243806566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692963988488320826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cf29e77ba4ae544a98a2b6c458d6ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderers:
-  - {fileID: 1692963988488320830}
-  _offset: 0
-  _precision: 10
 --- !u!114 &874939479338340088
 MonoBehaviour:
   m_ObjectHideFlags: 0
