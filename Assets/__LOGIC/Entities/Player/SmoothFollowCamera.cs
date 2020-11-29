@@ -15,8 +15,8 @@ public class SmoothFollowCamera : MonoBehaviour
         float distance = Vector3.Distance(_player.position, _crosshair.position);
         Vector3 pos = _player.position + (direction * (distance * _overheadMultiplier));
 
-        Vector3 targetPos = Vector2.Lerp(transform.position, _bounds.ClosestPoint(pos), _speed * Time.fixedDeltaTime);
-        targetPos.z = transform.position.z;
+        Vector3 targetPos = Vector2.Lerp(transform.localPosition, _bounds.ClosestPoint(pos), _speed * Time.fixedDeltaTime);
+        targetPos.z = transform.localPosition.z;
 
         transform.localPosition = targetPos;
     }
