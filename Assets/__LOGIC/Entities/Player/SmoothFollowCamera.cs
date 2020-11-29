@@ -9,6 +9,8 @@ public class SmoothFollowCamera : MonoBehaviour
     [SerializeField] private Transform _crosshair;
     private void FixedUpdate()
     {
+        if (_player == null || _crosshair == null) return;
+
         Vector3 direction = (_crosshair.position - _player.position).normalized;
         float distance = Vector3.Distance(_player.position, _crosshair.position);
         Vector3 pos = _player.position + (direction * (distance * _overheadMultiplier));

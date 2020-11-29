@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c87375efe1d454d8fcca29972405e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 5
 --- !u!114 &3069767259894347214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _range: 0.5
-  _damage: 10
+  _damage: 1
   _knockback: 10
   _cooldown: 2
   _attackDuration: 0.25

@@ -4,9 +4,9 @@ using UnityEngine;
 public class MeleeWeapon : Item
 {
     [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private float _radius = 1;
+    [SerializeField] private Vector2 _attackRange = new Vector2(0.5f, 0.5f);
     [SerializeField] private float _range = 1;
-    [SerializeField] private float _damage = 10;
+    [SerializeField] private int _damage = 1;
     [SerializeField] private float _knockback = 100;
     [SerializeField] private float _cooldown = 2;
     [SerializeField] private float _attackDuration = .25f;
@@ -14,8 +14,6 @@ public class MeleeWeapon : Item
     private bool _ready = true;
     public override void Use()
     {
-        Debug.DrawRay(_controller.transform.position + new Vector3(_controller.Forward.x, _controller.Forward.y) * _range, _controller.Forward * _radius, Color.blue);
-        Debug.DrawRay(_controller.transform.position + new Vector3(_controller.Forward.x, _controller.Forward.y) * _range, _controller.Right * _radius, Color.yellow);
         if (!_ready) return;
 
         Animator[] animators = _controller.GetComponentsInChildren<Animator>();
@@ -27,10 +25,11 @@ public class MeleeWeapon : Item
 
         StartCoroutine(CooldownRoutine());
 
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(_controller.transform.position, _radius, _controller.Forward, _range, _layerMask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(_controller.transform.position, _attackRange, 0, _controller.Forward, _range, _layerMask);
         if (hits == null || hits.Length == 0) return;
         foreach (RaycastHit2D hit in hits)
         {
+            if (!hit || !hit.rigidbody) return;
             Character character = hit.rigidbody.GetComponent<Character>();
             if (!character) return;
             character.ApplyDamage(_damage);
@@ -45,7 +44,14 @@ public class MeleeWeapon : Item
     {
         _ready = false;
         yield return new WaitForSeconds(_cooldown);
-        while (_controller.Use) yield return null;
+        while (_controller != null && _controller.Use) yield return null;
         _ready = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (_controller == null) return;
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube((Vector2)_controller.transform.position + _controller.Forward * _range, _attackRange);
     }
 }
