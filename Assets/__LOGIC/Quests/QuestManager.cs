@@ -27,7 +27,7 @@ public class QuestManager : MonoBehaviour
         var pickupItemQuests = _quests.Where(x => (x.GetType() == typeof(PickupItemQuest)));
         foreach (PickupItemQuest quest in pickupItemQuests)
         {
-            if (quest.Item.GetType() == item.GetType()) return true;
+            if (quest.Item.GetComponent<SpriteRenderer>().sprite == item.GetComponent<SpriteRenderer>().sprite) return true;
         }
         return false;
     }

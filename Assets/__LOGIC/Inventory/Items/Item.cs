@@ -2,6 +2,7 @@
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(Sprite))]
 public class Item : MonoBehaviour
 {
+    protected Renderer _renderer;
     protected Rigidbody2D _rigidbody;
     protected Collider2D _collider;
     protected Inventory _inventory;
@@ -10,6 +11,7 @@ public class Item : MonoBehaviour
 
     private void Awake()
     {
+        _renderer = GetComponent<Renderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         _particles = GetComponentInChildren<ParticleSystem>();
@@ -20,7 +22,7 @@ public class Item : MonoBehaviour
         _inventory = inventory;
         _controller = controller;
         _rigidbody.simulated = false;
-        
+
         if (_particles)
             _particles.gameObject.SetActive(false);
 
@@ -34,6 +36,7 @@ public class Item : MonoBehaviour
         _controller = null;
         _inventory = null;
         _rigidbody.simulated = true;
+        _renderer.enabled = true;
 
         if (_particles)
             _particles.gameObject.SetActive(true);

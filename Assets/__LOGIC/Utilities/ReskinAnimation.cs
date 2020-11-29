@@ -12,9 +12,6 @@ public class ReskinAnimation : MonoBehaviour
         {
             string spriteName = renderer.sprite.name;
             var newSprite = Array.Find(subSprites, Item => Item.name == spriteName);
-
-            foreach (var sub in subSprites)
-                Debug.Log(sub.name);
             if (newSprite)
             {
                 renderer.sprite = newSprite;
