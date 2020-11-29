@@ -25,8 +25,7 @@ public class RangedWeapon : Item
 
         GameObject projectile = GameObject.Instantiate(_projectile.gameObject, _controller.Pivot.position, Quaternion.identity);
         projectile.SetActive(true);
-        projectile.GetComponent<Projectile>().Setup(character, _damage, _controller.Forward, _force);
-
+        projectile.GetComponent<Projectile>().Setup(character, _damage, _controller.Forward, _force, "Enemy");
     }
 
 

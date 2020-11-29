@@ -6,17 +6,15 @@ public class EnemyBehaviour : CharacterMovement
 {
     public float Range { get { return _range; } }
 
+    [SerializeField] protected float _range = 1;
+    [SerializeField] protected int _damage = 1;
+    [SerializeField] protected float _knockback = 100;
+    [SerializeField] protected float _cooldown = 2;
+    [SerializeField] protected float _attackDuration = .25f;
 
-    [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private float _range = 1;
-    [SerializeField] private int _damage = 1;
-    [SerializeField] private float _knockback = 100;
-    [SerializeField] private float _cooldown = 2;
-    [SerializeField] private float _attackDuration = .25f;
-
-    private Transform _transform;
-    private SpriteRenderer _spriteRenderer;
-    private bool _ready = true;
+    protected Transform _transform;
+    protected SpriteRenderer _spriteRenderer;
+    protected bool _ready = true;
 
     protected override void Awake()
     {
@@ -34,7 +32,7 @@ public class EnemyBehaviour : CharacterMovement
             _spriteRenderer.flipX = direction.x < 0f;
     }
 
-    public void Attack(Character player)
+    public virtual void Attack(Character player)
     {
         if (!_ready) return;
 
@@ -42,7 +40,7 @@ public class EnemyBehaviour : CharacterMovement
         StartCoroutine(CooldownRoutine());
     }
 
-    private IEnumerator AttackRoutine(Character player)
+    protected virtual IEnumerator AttackRoutine(Character player)
     {
         if (_animator)
             _animator.SetTrigger("Attack");
@@ -59,7 +57,7 @@ public class EnemyBehaviour : CharacterMovement
         }
     }
 
-    private IEnumerator CooldownRoutine()
+    protected IEnumerator CooldownRoutine()
     {
         _ready = false;
         yield return new WaitForSeconds(_cooldown);
