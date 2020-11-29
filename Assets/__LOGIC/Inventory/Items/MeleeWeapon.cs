@@ -23,6 +23,8 @@ public class MeleeWeapon : Item
         _controller.GetComponent<CharacterMovement>().Move(Vector2.zero);
         _controller.GetComponent<Character>().Stun(_attackDuration);
 
+        SoundManager.PlaySound("woosh", false, .5f);
+
         StartCoroutine(CooldownRoutine());
 
         RaycastHit2D[] hits = Physics2D.BoxCastAll(_controller.Pivot.position, _attackRange, 0, _controller.Forward, _range, _layerMask);

@@ -25,6 +25,8 @@ public class Item : MonoBehaviour
             _particles.gameObject.SetActive(false);
 
         transform.localPosition = Vector3.zero;
+
+        SoundManager.PlaySound("pickup");
     }
     public virtual void Drop()
     {
