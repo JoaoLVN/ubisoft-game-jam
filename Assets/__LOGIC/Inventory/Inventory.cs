@@ -15,6 +15,14 @@ public class Inventory : MonoBehaviour
         set
         {
             _selectedSlot = (value % _capacity + _capacity) % _capacity;
+            for (int i = 0; i < _items.Length; i++)
+            {
+                if (_items[i] == null) return;
+                Renderer renderer = _items[i].GetComponent<Renderer>();
+                if (!renderer) return;
+                renderer.enabled = i == _selectedSlot;
+            }
+
         }
     }
     public Item[] Items
