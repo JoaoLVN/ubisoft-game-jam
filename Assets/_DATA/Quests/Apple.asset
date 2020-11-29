@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ad1bce26ade6a54b974d28f413433ce, type: 3}
-  m_Name: MeleeWeapon
+  m_Name: Apple
   m_EditorClassIdentifier: 
-  Item: {fileID: 4741883290609154968, guid: 9ece4f9696937284382495b28cfa93b5, type: 3}
-  Quantity: 10
+  Item: {fileID: 6762741545459287204, guid: b0a3f56566875a442b356454879977ec, type: 3}
+  Quantity: 1
