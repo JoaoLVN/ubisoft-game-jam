@@ -18,13 +18,15 @@ public class GameManager : SingletonBehaviour<GameManager>
     public static GAME_STATE State { get { return Instance._state; } }
     public static float TimeLeft { get { return Instance._timeLeft; } }
 
-    private GAME_STATE _state = GAME_STATE.GAME;
-    private GAME_STATE _lateState = GAME_STATE.INTRO;
+    private GAME_STATE _state = GAME_STATE.INTRO;
+    private GAME_STATE _lateState = GAME_STATE.START;
 
     [SerializeField] private GameObject _playerGameObject;
     [SerializeField] private QuestManager _questManager;
     [SerializeField] private float _maxTimer;
-    private float _timeLeft;
+    [SerializeField] private GameObject _hud;
+    [SerializeField] private GameObject _intro;
+    private float _timeLeft = 999f;
 
     /////////////////////////////////////////////////////////
 
@@ -65,6 +67,8 @@ public class GameManager : SingletonBehaviour<GameManager>
             case GAME_STATE.START:
                 break;
             case GAME_STATE.INTRO:
+                if (Input.GetMouseButtonDown(0))
+                    _state = GAME_STATE.GAME;
                 break;
             case GAME_STATE.GAME:
                 _timeLeft = Mathf.Clamp(_timeLeft - Time.deltaTime, 0f, _maxTimer);
@@ -90,8 +94,14 @@ public class GameManager : SingletonBehaviour<GameManager>
             case GAME_STATE.START:
                 break;
             case GAME_STATE.INTRO:
+                Time.timeScale = 0f;
+                _intro.SetActive(true);
+                _hud.SetActive(false);
                 break;
             case GAME_STATE.GAME:
+                Time.timeScale = 1f;
+                _intro.SetActive(false);
+                _hud.SetActive(true);
                 _timeLeft = _maxTimer;
                 break;
             case GAME_STATE.PAUSE:
