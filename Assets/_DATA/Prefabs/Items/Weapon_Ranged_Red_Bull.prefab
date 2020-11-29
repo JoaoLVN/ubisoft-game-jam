@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2592150558365321441}
   - component: {fileID: 7896945038580018323}
   - component: {fileID: 7077308443681854044}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Ranged_Red_Bull
   m_TagString: Untagged
   m_Icon: {fileID: 0}

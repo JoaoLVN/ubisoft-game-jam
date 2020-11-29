@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4411522253349844294}
   - component: {fileID: 8310934081060704564}
   - component: {fileID: 9004505069161312251}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Ranged_Toilet_Paper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

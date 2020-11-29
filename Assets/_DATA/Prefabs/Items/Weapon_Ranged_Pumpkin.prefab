@@ -4970,7 +4970,7 @@ GameObject:
   - component: {fileID: 5011586891018032636}
   - component: {fileID: 856252545705193870}
   - component: {fileID: 306867111732956993}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Ranged_Pumpkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

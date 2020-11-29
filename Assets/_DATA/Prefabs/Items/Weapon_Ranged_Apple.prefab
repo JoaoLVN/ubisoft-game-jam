@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1419947816935678166}
   - component: {fileID: 6762741545459287204}
   - component: {fileID: 5943105258308729451}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Ranged_Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}

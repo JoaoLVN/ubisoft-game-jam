@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 7568403938736830106}
   - component: {fileID: 7568403938736830109}
   - component: {fileID: 2938267747104517159}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Melee_Turkey_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

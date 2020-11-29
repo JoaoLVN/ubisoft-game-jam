@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1095320704446693218}
   - component: {fileID: 4710170367313222416}
   - component: {fileID: 5691936239030724063}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Ranged_Carrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

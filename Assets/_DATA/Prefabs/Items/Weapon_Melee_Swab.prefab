@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 7166714731250936711}
   - component: {fileID: 7166714731250936704}
   - component: {fileID: 2502810250058461498}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Melee_Swab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
