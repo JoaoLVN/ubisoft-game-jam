@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ToiletPaper
   m_EditorClassIdentifier: 
   Item: {fileID: 8310934081060704564, guid: 0a0242575223f334e89857c7125d0dc3, type: 3}
-  Quantity: 10
+  Quantity: 2
