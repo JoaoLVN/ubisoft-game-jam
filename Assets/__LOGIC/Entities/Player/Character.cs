@@ -29,7 +29,15 @@ public class Character : MonoBehaviour
 
         if (_animator)
             _animator.SetTrigger("Hit");
-        JuiceHelper.ScreenShake(.1f, .05f, 1);
+
+        if (tag == "Player")
+        {
+            JuiceHelper.ScreenShake(.25f, .1f, 25);
+            SoundManager.PlaySound("hit");
+        }
+        else
+            JuiceHelper.ScreenShake(.1f, .05f, 5);
+
 
         if (_health == 0) Die();
     }
