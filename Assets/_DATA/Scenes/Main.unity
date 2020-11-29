@@ -3288,6 +3288,8 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 6dd87efc074c4974086d7288364cca56, type: 3}
   - name: woosh
     sound: {fileID: 8300000, guid: 2fb4510a7b7e84746a04e8b33ad6b7f4, type: 3}
+  - name: danke
+    sound: {fileID: 8300000, guid: d07c6c383f106744aa1eea7691f4a83e, type: 3}
 --- !u!82 &1853527603
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3799,7 +3801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6782484366604374939, guid: 3dfbc78dfd09a684bbeab45916e0dc77, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.94
+      value: -13.01
       objectReference: {fileID: 0}
     - target: {fileID: 6782484366604374939, guid: 3dfbc78dfd09a684bbeab45916e0dc77, type: 3}
       propertyPath: m_LocalPosition.y

@@ -23,6 +23,9 @@ public class ShoppingKart : MonoBehaviour
         }
 
         _animator.SetInteger("CheckoutItems", _animator.GetInteger("CheckoutItems") + items.ToArray().Length);
+
+        if (items.ToArray().Length > 0)
+            SoundManager.PlaySound("danke", false, 1f);
     }
 
 }
