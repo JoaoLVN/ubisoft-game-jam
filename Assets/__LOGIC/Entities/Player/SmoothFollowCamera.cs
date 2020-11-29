@@ -18,7 +18,7 @@ public class SmoothFollowCamera : MonoBehaviour
         Vector3 targetPos = Vector2.Lerp(transform.position, _bounds.ClosestPoint(pos), _speed * Time.fixedDeltaTime);
         targetPos.z = transform.position.z;
 
-        transform.position = targetPos;
+        transform.localPosition = targetPos;
     }
 
     private void OnDrawGizmosSelected()
