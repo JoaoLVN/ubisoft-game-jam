@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   Item: {fileID: 6762741545459287204, guid: b0a3f56566875a442b356454879977ec, type: 3}
-  Quantity: 1
+  Quantity: 2
