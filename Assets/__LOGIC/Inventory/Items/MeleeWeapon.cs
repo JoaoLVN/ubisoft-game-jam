@@ -6,7 +6,7 @@ public class MeleeWeapon : Item
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Vector2 _attackRange = new Vector2(0.5f, 0.5f);
     [SerializeField] private float _range = 1;
-    [SerializeField] private float _damage = 10;
+    [SerializeField] private int _damage = 1;
     [SerializeField] private float _knockback = 100;
     [SerializeField] private float _cooldown = 2;
     [SerializeField] private float _attackDuration = .25f;

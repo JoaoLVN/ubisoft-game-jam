@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterMovement), typeof(Rigidbody2D))]
 public class Character : MonoBehaviour
 {
-    public float Health { get { return _health; } }
+    public int TotalHealth { get { return _totalHealth; } }
+    public int Health { get { return _health; } }
 
-    [SerializeField] private float _health = 100;
+    [SerializeField] private int _health = 5;
     private CharacterMovement _characterMovement;
     private Rigidbody2D _rigidbody;
     protected Animator _animator;
-
     protected IEnumerator _stunCoroutine;
+    private int _totalHealth = 5;
 
     private void Awake()
     {
+        _totalHealth = _health;
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _characterMovement = GetComponent<CharacterMovement>();
     }
 
-    public void ApplyDamage(float damage)
+    public void ApplyDamage(int damage)
     {
         _health -= damage;
         _health = Mathf.Clamp(_health, 0, 100);

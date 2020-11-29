@@ -40,11 +40,13 @@ public class Inventory : MonoBehaviour
 
     private PlayerController _controller;
     private List<Collider2D> _ignoredColliders = new List<Collider2D>();
+    private Item _defaultItemInstance;
     private void Awake()
     {
         _items = new Item[_capacity];
         _controller = GetComponent<PlayerController>();
-        _defaultItem.Pickup(this, _controller);
+        _defaultItemInstance = GameObject.Instantiate(_defaultItem.gameObject).GetComponent<Item>();
+        _defaultItemInstance.Pickup(this, _controller);
     }
 
     private void LateUpdate()
@@ -111,7 +113,7 @@ public class Inventory : MonoBehaviour
         var item = _items[_selectedSlot];
         if (item == null)
         {
-            _defaultItem.Use();
+            _defaultItemInstance.Use();
             return;
         }
         item.Use();

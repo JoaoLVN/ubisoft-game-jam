@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     private GAME_STATE _state = GAME_STATE.GAME;
     private GAME_STATE _lateState = GAME_STATE.INTRO;
 
+    [SerializeField] private GameObject _playerGameObject;
     [SerializeField] private QuestManager _questManager;
     [SerializeField] private float _maxTimer;
     private float _timeLeft;
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            GameObject.DestroyImmediate(this);
+            Destroy(this);
             return;
         }
 
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (_timeLeft == 0)
+        if (_timeLeft == 0 || _playerGameObject == null)
         {
             _state = GAME_STATE.FAILED;
         }
@@ -83,9 +85,11 @@ public class GameManager : MonoBehaviour
                 break;
             case GAME_STATE.WON:
                 Debug.Log("Won");
+                DOTween.Clear(true);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
             case GAME_STATE.FAILED:
+                DOTween.Clear(true);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
         }

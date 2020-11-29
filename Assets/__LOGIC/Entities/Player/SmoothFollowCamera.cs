@@ -7,6 +7,7 @@ public class SmoothFollowCamera : MonoBehaviour
     [SerializeField] private Transform _target;
     private void FixedUpdate()
     {
+        if (_target == null) return;
         Vector3 targetPosition = Vector3.Lerp(transform.position, _bounds.ClosestPoint(_target.position), _speed * Time.fixedDeltaTime);
         targetPosition.z = transform.position.z;
         transform.position = targetPosition;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(EnemyBehaviour))]
 public class EnemyAIMelee : EnemyAI
@@ -43,6 +41,7 @@ public class EnemyAIMelee : EnemyAI
 
     protected override void Update()
     {
+        if (_player == null) return;
         _playerOffset = _player.position - _transform.position;
         _playerDistance = new Vector2(Mathf.Abs(_playerOffset.x), Mathf.Abs(_playerOffset.y));
         _playerDirection = _playerOffset.normalized;
