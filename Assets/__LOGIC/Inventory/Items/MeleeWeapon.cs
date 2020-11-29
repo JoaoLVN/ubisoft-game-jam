@@ -18,7 +18,10 @@ public class MeleeWeapon : Item
         Debug.DrawRay(_controller.transform.position + new Vector3(_controller.Forward.x, _controller.Forward.y) * _range, _controller.Right * _radius, Color.yellow);
         if (!_ready) return;
 
-        _controller.GetComponent<Animator>().SetTrigger("Attack");
+        Animator[] animators = _controller.GetComponentsInChildren<Animator>();
+        foreach (Animator animator in animators)
+            animator.SetTrigger("Attack");
+
         _controller.GetComponent<CharacterMovement>().Move(Vector2.zero);
         _controller.GetComponent<Character>().Stun(_attackDuration);
 

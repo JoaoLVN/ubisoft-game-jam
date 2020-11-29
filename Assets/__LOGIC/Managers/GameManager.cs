@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public enum GAME_STATE
 {
@@ -35,12 +34,6 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
-    }
-
-    private void Start()
-    {
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
-            Cursor.visible = false;
     }
 
     private void Update()
