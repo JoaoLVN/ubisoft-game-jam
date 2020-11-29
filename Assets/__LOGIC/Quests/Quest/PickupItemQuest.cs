@@ -28,7 +28,7 @@ public class PickupItemQuest : Quest
         _currentQuantity = 0;
         shoppingKart.OnItemCollected.AddListener((item) =>
         {
-            if (item.GetType() != Item.GetType()) return;
+            if (Item.GetComponent<SpriteRenderer>().sprite != item.GetComponent<SpriteRenderer>().sprite) return;
             _complete = ++_currentQuantity >= Quantity;
         });
     }
