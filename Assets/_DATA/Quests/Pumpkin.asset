@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Pumpkin
   m_EditorClassIdentifier: 
   Item: {fileID: 856252545705193870, guid: c49ea1056746c594aadfde29908fadc7, type: 3}
-  Quantity: 1
+  Quantity: 5
