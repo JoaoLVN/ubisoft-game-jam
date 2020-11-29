@@ -52,6 +52,7 @@ public class EnemyBehaviour : CharacterMovement
 
         if (Vector2.Distance(_transform.position, player.transform.position) <= _range)
         {
+            forward = (player.transform.position - _transform.position).normalized;
             player.ApplyDamage(_damage);
             player.ApplyKnockback(forward, _knockback);
         }
