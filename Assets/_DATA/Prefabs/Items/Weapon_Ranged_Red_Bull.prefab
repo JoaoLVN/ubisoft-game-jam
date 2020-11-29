@@ -122,8 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 9060279000594867849}
   _force: 10
-  _damage: 1
-  _cooldown: 2
+  _damage: 2
+  _cooldown: 1
   _attackDuration: 0.375
 --- !u!58 &-5818686310578821028
 CircleCollider2D:
