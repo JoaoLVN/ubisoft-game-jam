@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     public Vector2 Forward { get { return _forward; } }
     public Vector2 Right { get { return Quaternion.Euler(0, 0, 90) * _forward; } }
 
+    [SerializeField] private Transform _smear;
+    [SerializeField] private Transform _arm;
+
     private bool _drop;
     private bool _use;
     private Inventory _inventory;
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         ProcessInputs();
-        _spriteRenderer.flipX = Forward.x < 0f;
+        HandleRotation();
     }
 
     private void ProcessInputs()
@@ -52,5 +55,12 @@ public class PlayerController : MonoBehaviour
         }
         _inventory.SelectedSlot += Input.mouseScrollDelta.y == 0 ? 0 : (int)Mathf.Sign(Input.mouseScrollDelta.y);
 
+    }
+
+    private void HandleRotation()
+    {
+        _spriteRenderer.flipX = _forward.x < 0f;
+        _arm.localScale = new Vector3(Mathf.Sign(_forward.x), 1f, 1f);
+        _smear.right = _forward;
     }
 }

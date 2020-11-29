@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     }
     public virtual void Pickup(Inventory inventory, PlayerController controller)
     {
-        transform.parent = inventory.transform;
+        transform.parent = inventory.transform.Find("Arm").Find("Hand");
         _inventory = inventory;
         _controller = controller;
         _rigidbody.simulated = false;

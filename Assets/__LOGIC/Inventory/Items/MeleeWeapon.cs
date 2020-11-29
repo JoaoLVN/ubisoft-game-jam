@@ -16,7 +16,10 @@ public class MeleeWeapon : Item
     {
         if (!_ready) return;
 
-        _controller.GetComponent<Animator>().SetTrigger("Attack");
+        Animator[] animators = _controller.GetComponentsInChildren<Animator>();
+        foreach (Animator animator in animators)
+            animator.SetTrigger("Attack");
+
         _controller.GetComponent<CharacterMovement>().Move(Vector2.zero);
         _controller.GetComponent<Character>().Stun(_attackDuration);
 
