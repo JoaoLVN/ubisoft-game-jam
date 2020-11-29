@@ -26,6 +26,8 @@ public class GameManager : SingletonBehaviour<GameManager>
     [SerializeField] private float _maxTimer;
     [SerializeField] private GameObject _hud;
     [SerializeField] private GameObject _intro;
+    [SerializeField] private GameObject _fail;
+    [SerializeField] private GameObject _win;
     private float _timeLeft = 999f;
 
     /////////////////////////////////////////////////////////
@@ -78,11 +80,13 @@ public class GameManager : SingletonBehaviour<GameManager>
             case GAME_STATE.WON:
                 Debug.Log("Won");
                 DOTween.Clear(true);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                if (Input.GetMouseButtonDown(0))
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
             case GAME_STATE.FAILED:
                 DOTween.Clear(true);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                if (Input.GetMouseButtonDown(0))
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
         }
     }
@@ -97,14 +101,36 @@ public class GameManager : SingletonBehaviour<GameManager>
                 Time.timeScale = 0f;
                 _intro.SetActive(true);
                 _hud.SetActive(false);
+                _win.SetActive(false);
+                _fail.SetActive(false);
                 break;
             case GAME_STATE.GAME:
                 Time.timeScale = 1f;
                 _intro.SetActive(false);
                 _hud.SetActive(true);
+                _win.SetActive(false);
+                _fail.SetActive(false);
                 _timeLeft = _maxTimer;
                 break;
             case GAME_STATE.PAUSE:
+                break;
+            case GAME_STATE.FAILED:
+                Time.timeScale = 0f;
+                SoundManager.Instance.GetComponent<AudioSource>().volume = .1f;
+                SoundManager.PlaySound("fail");
+                _intro.SetActive(false);
+                _hud.SetActive(false);
+                _win.SetActive(false);
+                _fail.SetActive(true);
+                break;
+            case GAME_STATE.WON:
+                Time.timeScale = 0f;
+                SoundManager.Instance.GetComponent<AudioSource>().volume = .1f;
+                SoundManager.PlaySound("danke");
+                _intro.SetActive(false);
+                _hud.SetActive(false);
+                _win.SetActive(true);
+                _fail.SetActive(false);
                 break;
         }
     }
