@@ -4825,7 +4825,7 @@ GameObject:
   - component: {fileID: 2313649812921746624}
   - component: {fileID: 3271061862250102265}
   - component: {fileID: 375417246841264290}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4928,7 +4928,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4970,7 +4970,7 @@ GameObject:
   - component: {fileID: 6588774443992364746}
   - component: {fileID: 1521858149101621944}
   - component: {fileID: 1927130282618760311}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Weapon_Ranged_Bread
   m_TagString: Untagged
   m_Icon: {fileID: 0}

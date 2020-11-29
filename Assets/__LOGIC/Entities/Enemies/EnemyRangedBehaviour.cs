@@ -21,8 +21,8 @@ public class EnemyRangedBehaviour : EnemyBehaviour
 
         yield return new WaitForSeconds(_attackDuration);
 
-        GameObject projectile = GameObject.Instantiate(_projectile.gameObject, _pivot.position, Quaternion.identity);
+        GameObject projectile = Instantiate(_projectile.gameObject, _pivot.position, Quaternion.identity);
         projectile.SetActive(true);
-        projectile.GetComponent<Projectile>().Setup(GetComponent<Character>(), _damage, forward, _force, "Player");
+        projectile.GetComponent<Projectile>().Setup(GetComponent<Character>(), _damage, forward, _force);
     }
 }

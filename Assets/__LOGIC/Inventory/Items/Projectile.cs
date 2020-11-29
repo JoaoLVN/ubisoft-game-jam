@@ -4,21 +4,20 @@ public class Projectile : MonoBehaviour
 {
     private Character _character;
     private int _damage;
-    private string _tag;
 
-    public void Setup(Character character, int damage, Vector3 direction, float force, string tag)
+    public void Setup(Character character, int damage, Vector3 direction, float force)
     {
         _character = character;
         _damage = damage;
-        _tag = tag;
         GetComponent<Rigidbody2D>().AddForce(direction * force, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddTorque(force, ForceMode2D.Impulse);
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         var character = other.gameObject.GetComponent<Character>();
-        if (character != null && character != _character && _character.tag == _tag)
+        if (character != null && character != _character)
         {
             character.ApplyDamage(_damage);
         }
